@@ -1,6 +1,7 @@
 import sys
 import keyboard
 import random
+import time
 i = 0
 print(f"Press Space to play or Esc to exit.")
 while i < 5:
@@ -133,6 +134,7 @@ while i < 5:
             if option1 == 'STAY':
                 print(
                     f'Hours later, rats will come to your cell and will start to eat you. Game Over.')
+                time.sleep(5.5)
                 sys.exit(0)
             elif option1 == 'GO':
                 lev1 = True
@@ -287,6 +289,7 @@ while i < 5:
                                 if HP <= 0:
 
                                     print(f"You died!, It's Game Over, man!")
+                                    time.sleep(5.5)
                                     sys.exit(0)
                                 else:
                                     print(
@@ -304,6 +307,7 @@ while i < 5:
                     while level3 == True:
                         print(f'You find a bridge.')
                         print(f'The end')
+                        time.sleep(5.5)
                         sys.exit(0)
 
     if keyboard.is_pressed('Esc'):
