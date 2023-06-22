@@ -11,6 +11,8 @@ while i < 5:
         print(f'Welcome to Dungeons & Dragons!')
         character = input(f'Choose your character! Fighter, Wizard or Rogue.')
         Start = False
+
+        #Fighter
         if character == 'Fighter':
             st = 18
             de = 10
@@ -19,12 +21,12 @@ while i < 5:
             wi = 11
             ch = 12
 
-            stMod = 4
+            stMod = +4
             deMod = 0
-            coMod = 3
+            coMod = +3
             iMod = -1
             wiMod = 0
-            chMod = 2
+            chMod = +2
 
             HP = 10
             AC = 13
@@ -33,7 +35,7 @@ while i < 5:
             Att = random.randint(1, 20) + stMod
             dmg = random.randint(2, 6) + stMod
 
-            initiative = random.randint(1, 20) + deMod
+            
 
             exp = 0
 
@@ -48,6 +50,8 @@ while i < 5:
             print(f'Attack ', att)
             print(f'Experience: ', exp)
             Start = True
+
+            # Wizard
         elif character == 'Wizard':
             st = 8
             de = 10
@@ -66,11 +70,11 @@ while i < 5:
             HP = 12
             AC = 9
 
-            att = ('Burning Hands')
+            att = ('Spell')
             Att = random.randint(1, 20) + iMod
             dmg = random.randint(3, 6) + iMod
 
-            initiative = random.randint(1, 20) + deMod
+           
 
             exp = 0
 
@@ -86,6 +90,8 @@ while i < 5:
             print(f'Experience: ', exp)
 
             Start = True
+
+            # Rogue
         elif character == 'Rogue':
             st = 11
             de = 18
@@ -104,11 +110,11 @@ while i < 5:
             HP = 13
             AC = 10
 
-            att = ('Crossbow')
+            att = ('Crossbow & Dagger')
             Att = random.randint(1, 20) + deMod
             dmg = random.randint(1, 4) + deMod
 
-            initiative = random.randint(1, 20) + deMod
+           
 
             exp = 0
 
@@ -127,106 +133,130 @@ while i < 5:
         else:
          print(f'Choose Again!')
          i = 0
+
+         #Game Start
         while Start == True:
             lev1 = False
+            #Cell
             option1 = input(
                 'You find yourself in a cell of a dungeon, then, from a wall, a key slips underneath. What will you do? STAY or GO?')
+                #Game Over
             if option1 == 'STAY':
                 print(
                     f'Hours later, rats will come to your cell and will start to eat you. Game Over.')
                 time.sleep(5.5)
                 sys.exit(0)
+                #Go
             elif option1 == 'GO':
+                #First Level
                 lev1 = True
             else:
                 print(f'Choose Again!')
                 Start = True
             while lev1 == True:
                 Level2 = False
+                #DeadGuard
                 option2 = input(
                     'You are outside the cell and find a dead guard. TAKE his sword or NO?')
+                    #Better Melee
                 if option2 == 'TAKE':
                     print(f'You have taken the sword with you.')
                     stMod + 2
                     Level2 = True
+                    #Don't take sword
                 elif option2 == 'NO':
                     print(f'You leave the sword there.')
                     Level2 = True
                 else:
                     print(f'Choose Again!')
                     lev1 = True
+                    #Level 2
                 while Level2 == True:
 
                     Fight = False
 
                     level3 = False
 
+                    #Goblin
                     what = input(
                         f"On the way you find a goblin, he didn't notice you and you can make a stealth check to pass without being unnoticed or fight him. FIGHT or PASS? You can sneak KILL him too.")
+                    #Choose
                     if what == 'FIGHT':
-                        Fight = True
-
-                    elif what == 'PASS':
-                        print(
-                            f'You try to sneak and walk unnoticed. Can you succeed?')
-                        input(f"Press Enter to Roll 1d20")
-                        d20 = random.randint(1, 20) + deMod
-                        print(d20)
-                        if d20 >= 12:
-                         print(f"You sneaked away from him!")
-                         level3 = True
-                        elif d20 < 12:
-                         print(f"You failed! Now, battle!")
-                         Fight = True
-
-                    elif what == 'KILL':
-                        print(f'Will you kill him easily or will you be noticed?')
-                        input(f"Press Enter to Roll 1d20")
-                        d20 = random.randint(1, 20) + deMod
-                        print(d20)
-                        if d20 >= 15:
-                         print(f"You killed him!")
-                         level3 = True
-                        elif d20 < 15:
-                         print(f"You failed! Now, battle!")
-                         Fight = True
-
-                    else:
-                        print(f'Choose Again!')
-                        Level2 = True
-
-                    while Fight == True:
-                        Start == False
                         print(f'The goblin notices you. Fight!')
-
-                        YTurn = False
-                        GTurn = False
-
-                        initiative
-
                         gDeMod = 1
 
                         gStMod = 1
 
                         gAC = 11
 
-                        gInit = random.randint(1, 20) + gDeMod
+                        
 
-                        gAtt = random.randint(1, 20) + gStMod
+                        
 
-                        gDMG = random.randint(1, 20) + gStMod
+                        
 
                         gHP = 8
+                        Fight = True
+                        #Pass
+                    elif what == 'PASS':
+                        print(f'You try to sneak and walk unnoticed. Can you succeed?')
+                        print(f"Press Enter to Roll 1d20")
+                        d20 = random.randint(1, 20) + deMod
+                        print(d20)
+                        if d20 >= 12:
+                          print(f"You sneaked away from him!")
+                          level3 = True
+                        elif d20 < 12:
+                          print(f"You failed! Now, battle!")
+                          Fight = True
 
-                        initiative
+                    #Kill
+                    elif what == 'KILL':
+                        print(f'Will you kill him easily or will you be noticed?')
+                        print(f"Press Enter to Roll 1d20")
+                        
+                        d20 = random.randint(1, 20) + deMod
+                        print(d20)
+                        if d20 >= 15:
+                          print(f"You killed him!")
+                          exp = exp + 100
+                          print(f'Now your experience is ', exp)
+                          level3 = True
+                        elif d20 < 15:
+                          print(f"You failed! Now, battle!")
+                          Fight = True
 
-                        gInit
+                    else:
+                        print(f'Choose Again!')
+                        Level2 = True
 
-                        if initiative > gInit:
+                        #Fight
+
+                    while Fight == True:
+                        Start == False
+                        
+                        YTurn = False
+                        GTurn = False
+
+                         
+
+                         
+
+                        initiative = random.randint(1, 20) + deMod
+
+                        gInit = random.randint(1, 20) + gDeMod
+
+                        if initiative == gInit:
+
+                            print(initiative, gInit)
+                            print(f'Roll again!')
+
+                            Fight = True
+
+                        elif initiative > gInit:
                             print(initiative, gInit)
 
                             print(f'You go first!')
-
                             YTurn = True
 
                         elif initiative < gInit:
@@ -234,24 +264,25 @@ while i < 5:
                             print(initiative, gInit)
 
                             print(f'Goblin goes first!')
-
+                            
                             GTurn = True
 
-                        elif initiative == gInit:
-
-                            print(initiative, gInit)
-                            print(f'Roll again!')
-                            Fight = True
+                        
 
                         while YTurn == True:
-                            GTurn = False
+                            
                             Att
 
                             if Att >= gAC:
 
-                                print(f'You hit your oponent!')
+                                print(Att)
+
+                                print(f'You hit your opponent!')
+                               
 
                                 dmg
+
+                                print(dmg)
 
                                 gHP = gHP - dmg
 
@@ -259,53 +290,65 @@ while i < 5:
                                     Fight = False
                                     YTurn = False
                                     GTurn = False
-                                    print(f'You slained the goblin!')
+                                    print(f'You have slain the goblin!')
+                                    
                                     exp = exp + 100
                                     print(f'Now your experience is ', exp)
-
+                                    
                                     level3 = True
 
                                 else:
                                     print(f"Goblin's turn!")
-                                    YTurn = False
+                                   
+                                   
                                     GTurn = True
+                                    YTurn = False
                             else:
                                 print(f"You missed! Goblin's turn!")
-                                YTurn = False
+                                
+                                
                                 GTurn = True
+                                YTurn=False
 
                         while GTurn == True:
-                            YTurn = False
-                            gAtt
+
+                            
+                           
+                            gAtt = random.randint(1, 20) + gStMod
 
                             if gAtt >= AC:
                                 print(gAtt, AC)
                                 print(f'The goblin hits you!')
+                               
+                                gDMG = random.randint(1, 20) + gStMod
 
-                                gDMG
+                               
 
                                 HP = HP - gDMG
-
+                                print(f'You take ', gDMG, ' damage, and now you have ', HP, ' left!')
                                 if HP <= 0:
 
-                                    print(f"You died!, It's Game Over, man!")
+                                    print(f"You died! It's Game Over, man!")
                                     time.sleep(5.5)
                                     sys.exit(0)
                                 else:
-                                    print(
-                                        f'You take ', gDMG, ' damage, and now you have ', HP, ' left!')
-                                    print(f'Your turn!')
-                                    GTurn = False
-                                    YTurn = True
+                                     print(f'Your turn!')
+                                    
+                                    
+                                     YTurn = True
+                                     GTurn=False
                             else:
 
                                 print(gAtt, AC)
                                 print(f'Goblin misses you!')
-                                GTurn = False
+                               
+                                
                                 YTurn = True
+                                GTurn=False
 
                     while level3 == True:
                         print(f'You find a bridge.')
+                        
                         print(f'The end')
                         time.sleep(5.5)
                         sys.exit(0)
